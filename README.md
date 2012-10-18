@@ -2,6 +2,8 @@
 
 A Powershell based script for Windows users which can be used for converting the DTS audio track in a MKV (Matroska) file to AC3.
 
+Intended for use as a post-processing script for Sabnzbd+ but can be used without.
+
 Inspired by Jack Wharton's linux version available [here] (https://github.com/JakeWharton/mkvdts2ac3).
 
 
@@ -23,24 +25,26 @@ Note: This script was developed on a machine running Powershell v3 although v2 s
 **Next steps required if you are using as a post-processing script with Sabnzbd+ (no CouchPotato):**
   1. Edit `mkvdts2ac3.cmd` script and change the value of USECOUCHPOTATO to 0 - eg. `USECOUCHPOTATO=0`
   2. Edit `mkvdts2ac3.cmd` script and update the location on your system of the `mkvdts2ac3.ps1` file.
-  3. Set post-processing script for your movies category to `mkvdts2ac3.cmd`
+  3. In Sabnzbd+, set post-processing script for your movies category to `mkvdts2ac3.cmd`
 
 **Next steps required if you are using as a post-processing script with Sabnzbd+ AND using CouchPotato:**
   1. Edit `mkvdts2ac3.cmd` script and change the value of USECOUCHPOTATO to 1 - eg. `USECOUCHPOTATO=1`
   2. Install and configure `sabToCouchPotato.exe` post-processing script as per instructions on the linked url in Pre-reqs section.
   3. Edit `mkvdts2ac3.cmd` script and update the location on your system of the `mkvdts2ac3.ps1` file and the `sabToCouchPotato.exe` file.
-  4. Set post-processing script for your movies category to `mkvdts2ac3.cmd`
+  4. In Sabnzbd+, set post-processing script for your movies category to `mkvdts2ac3.cmd`
 
 ##Running Manually
   From windows command prompt enter command:
 
-    <script-directory>\mkvdts2ac3.cmd "path-to-mkv-file"
+    <script-directory>\mkvdts2ac3.cmd "<video-directory>"
 
   Eg.
   
-    D:\scripts\mkvdts2ac3.cmd "D:\my videos\video1.mkv"
+    D:\scripts\mkvdts2ac3.cmd "D:\my videos\video1"
 
   The script will run and the DTS track in the MKV file will be converted to AC3.
+
+  **NOTE As this script was originally intended for use with Sabnzbd+, any files matching the pattern `*.txt` `*.sfv` `*sample*` are deleted from the target video directory**
 
 ##Running as a post processing script for Sabnzbd+
   Configure a category for your downloads with the post-processing script set to `mkvdts2ac3.cmd`
